@@ -1,0 +1,66 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(vector<int> ingredient) {
+    int answer = 0;
+    /*int bread = 0;
+    int meat = 0;
+    int vegi = 0;
+    
+    for(int i = 0 ; i < (int) ingredient.size() ; i++)
+    {
+        if(ingredient[i] == 1)
+            bread++;
+        else if(ingredient[i] == 2)
+            vegi++;
+        else if(ingredient[i] == 3)
+            meat++;
+        
+        if(bread >= 2 && vegi >=1 && meat >= 1)
+        {
+            bread -= 2;
+            vegi--;
+            meat--;
+            answer++;
+        }
+    }
+    
+    string str = "";
+    
+    for(int i = 0 ; i < (int) ingredient.size() ; i++)
+    {
+        str += to_string(ingredient[i]);
+        
+        if(str.size() > 4)
+        {
+            string temp = str.substr(str.size()-4);
+
+            if (temp == "1231")
+            {
+                str = str.substr(0, str.size()-4);
+                answer++;
+            }
+        }
+    }*/
+    
+    std::vector<int> temp = { -1 };
+    
+    for(int x : ingredient)
+    {
+        if(temp.back() == 1 && x == 2) 
+            temp.back() = 12;
+        else if(temp.back() == 12 && x == 3) 
+            temp.back() = 123;
+        else if(temp.back() == 123 && x == 1) 
+        {
+            answer++;
+            temp.pop_back();
+        }
+        else 
+            temp.push_back(x);
+    } 
+    
+    return answer;
+}

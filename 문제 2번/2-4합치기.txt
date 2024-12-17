@@ -1,0 +1,19 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(int a, int b) {
+    string str_a = to_string(a);
+    string str_b = to_string(b);
+    
+    int case1 = stoi(str_a + str_b);
+    int case2 = stoi(str_b + str_a);
+    
+    if(case1 >= case2)
+        return case1;
+    else
+        return case2;
+    
+    //return answer;
+}
